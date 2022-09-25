@@ -18,11 +18,11 @@ def print_transaction_table_for_symbol(symbol, country, start_date, end_date):
 
 
 escape = None
-while escape is not "n":
-    symbol = input(f"Please type RIC code: ")
-    country_code = input("Please type 2 digit country code: ")
-    start_date = input("Please type initial date (yyyy-mm-dd): ")
-    end_date = input("Please type end date (yyyy-mm-dd): ")
+while escape != "n":
+    symbol = input(f"Please enter the desired RIC code: ")
+    country_code = input("Please enter the 2-digit country code: ")
+    start_date = input("Please enter the initial date for the period (yyyy-mm-dd): ")
+    end_date = input("Please enter the end date for the period (yyyy-mm-dd): ")
 
     print_transaction_table_for_symbol(symbol, country_code, start_date, end_date)
     escape = input("Request another symbol? ('n' to quit or enter any other value to continue: ")

@@ -1,5 +1,4 @@
 import pytest
-import names
 
 from transaction_parser import TransactionParser
 
@@ -16,11 +15,11 @@ class TestTransactionParser:
     def test_sample_skippable_test(self):
         return
 
-    @pytest.mark.transactions
+    @pytest.mark.filtertransactions
     def test_get_filtered_data_when_empty_data_provided_returns_empty_list(self, parser):
         assert parser.get_filtered_data() == []
 
-    @pytest.mark.transactions
+    @pytest.mark.filtertransactions
     def test_get_filtered_data_when_valid_data_provided_returns_filtered_data(self):
         test_data = self.__create_test_data(1)
         parser = TransactionParser(test_data)
@@ -37,7 +36,7 @@ class TestTransactionParser:
             }]
         assert parser.get_filtered_data() == expected_data
 
-    @pytest.mark.transactions
+    @pytest.mark.filtertransactions
     @pytest.mark.parametrize('records, result', [
         (0, 0),
         (1, 1),
@@ -49,13 +48,13 @@ class TestTransactionParser:
         transaction_list = parser.get_filtered_data()
         assert len(transaction_list) == result
 
-    @pytest.mark.transactions
+    @pytest.mark.transactionobjects
     def test_get_transaction_objects_list_when_empty_data_provided_returns_empty_list(self):
         data = None
         parser = TransactionParser(data)
         assert parser.get_transaction_objects_list() == []
 
-    @pytest.mark.transactions
+    @pytest.mark.transactionobjects
     def test_get_transaction_objects_list_when_valid_data_provided_returns_objects_list(self):
         test_data = self.__create_test_data(1)
         parser = TransactionParser(test_data)
@@ -70,7 +69,7 @@ class TestTransactionParser:
         assert transaction.exchange == "LSE"
         assert len(transaction_list) == 1
 
-    @pytest.mark.transactions
+    @pytest.mark.transactionobjects
     @pytest.mark.parametrize('records, result', [
         (0, 0),
         (1, 1),
@@ -96,9 +95,8 @@ class TestTransactionParser:
     # 2 global lists could be used for that - input data and expected data, which would be
     # accessed and cleaned by the tests that use them
     def __generate_test_record(self):
-        filerName = names.get_full_name()
         record = {
-            "filerName": f"{filerName}",
+            "filerName": "Hauck (Jon)",
             "transactionText": "Bought at price 0.01 per share.",
             "moneyText": "",
             "ownership": "D",
