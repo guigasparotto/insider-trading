@@ -21,6 +21,21 @@ git clone https://github.com/guigasparotto/insider-trading.git
 
 * An api key is required. If you don't have one, go to [Yahoo Finance API](https://rapidapi.com/apidojo/api/yh-finance/) and subscribe for free to get one
 
+### Running the Tests
+
+In order to run the unit tests, **no API key is required**, given the test data is generated in the test class and provided to the TransactionParser class. Once again, that are 2 main options to run the tests:
+* from the IDE - using PyCharm, double-click on the *test_transaction_parser.py*, then right-click on the class name - *TestTransactionParser* - and select one of the available option (run or debug tests)
+* from the command line, run one of the commands below (-v for verbose, will print additional information about the tests performed)
+```
+pytest test_transaction_parser.py
+pytest test_transaction_parser.py -v
+```
+* you can also filter the tests using one of the available markers, configured in pytest.ini - filtertransactions / transactionobjects
+```
+pytest -m filtertransactions test_transaction_parser.py
+pytest -m transactionobjects test_transaction_parser.py -v
+```
+
 ### Running the Program
 
 Once you created your API key, update the config.ini file by replacing the filed description with your key, then either:
@@ -42,21 +57,6 @@ Please enter the end date for the period (yyyy-mm-dd): 2022-12-31
   Doe (Jon)  Exercise of Option at price 0.01 per share.         D  2022-01-22      10       10      LSE      GBp
   Doe (Jon)               Sold at price 26.30 per share.         D  2022-09-22    1000     1000      LSE      GBp
 
-```
-
-### Running the Tests
-
-In order to run the unit tests, **no API key is required**, given the test data is generated in the test class and provided to the TransactionParser class. Once again, that are 2 main options to run the tests:
-* from the IDE - using PyCharm, double-click on the *test_transaction_parser.py*, then right-click on the class name - *TestTransactionParser* - and select one of the available option (run or debug tests)
-* from the command line, run one of the commands below (-v for verbose, will print additional information about the tests performed)
-```
-pytest test_transaction_parser.py
-pytest test_transaction_parser.py -v
-```
-* you can also filter the tests using one of the available markers, configured in pytest.ini - filtertransactions / transactionobjects
-```
-pytest -m filtertransactions test_transaction_parser.py
-pytest -m transactionobjects test_transaction_parser.py -v
 ```
 
 ### Additional Notes
