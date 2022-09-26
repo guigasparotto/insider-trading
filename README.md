@@ -19,7 +19,7 @@ The project was created and tested with [Python 3.8](https://www.python.org/down
 git clone https://github.com/guigasparotto/insider-trading.git
 ```
 
-* An api key is required. If you don't have one, go to [Yahoo Finance API](https://rapidapi.com/apidojo/api/yh-finance/) and subscribe for free to get one
+* An api key is required to run the program, but the unit tests can be performed without it. If you don't have one, go to [Yahoo Finance API](https://rapidapi.com/apidojo/api/yh-finance/) and subscribe for free to get one
 
 ### Running the Tests
 
